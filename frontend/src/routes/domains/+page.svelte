@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import client from '$lib/api';
 	import Counter from './counter.svelte';
-	import Paths from './paths.svelte';
+	import TopTable from './top-table.svelte';
 
 	const todayMidnight = new Date();
 	todayMidnight.setHours(0, 0, 0, 0);
@@ -39,9 +39,9 @@
 		<Counter {domain} start={beginningOfTime} text="All Time" />
 	</div>
 
-	<Paths {domain} type="paths" />
-	<Paths {domain} type="devices" />
-	<Paths {domain} type="sessions" />
+	<TopTable {domain} type="paths" />
+	<TopTable {domain} type="devices" />
+	<TopTable {domain} type="sessions" />
 {:else}
 	Please specify a domain.
 {/if}

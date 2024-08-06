@@ -59,8 +59,11 @@
 	<span class="border-b border-gray-100 py-2 font-bold">Views</span>
 	{#each Object.entries(data) as [item, count]}
 		{#if type === 'paths'}
-			<a href="https://{domain}{item}" target="_blank" rel="noopener noreferrer" class="py-1"
-				>{item}</a
+			<a
+				href="https://{domain}{item}"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="py-1 hover:underline">{item}</a
 			>
 		{:else}
 			<span class="py-1">{item}</span>
