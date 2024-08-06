@@ -58,7 +58,7 @@ func RemoveDuplicates(views []View) []View {
 	var deduped []View
 
 	for _, view := range views {
-		key := view.Path + view.Session
+		key := view.Session
 		if _, ok := unique[key]; !ok {
 			unique[key] = true
 			deduped = append(deduped, view)

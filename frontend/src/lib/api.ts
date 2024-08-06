@@ -4,6 +4,7 @@ type ViewsRequestOptions = {
 	domain: string;
 	start: Date;
 	end?: Date;
+	dedupe?: boolean;
 	interval?: string;
 };
 
@@ -17,6 +18,9 @@ export class Client {
 		});
 		if (options.end) {
 			params.append('end', options.end.toISOString());
+		}
+		if (options.dedupe) {
+			params.append('dedupe', 'true');
 		}
 		if (options.interval) {
 			params.append('interval', options.interval);
