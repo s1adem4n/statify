@@ -58,7 +58,13 @@
 	<span class="border-b border-gray-100 py-2 font-bold capitalize">{type}</span>
 	<span class="border-b border-gray-100 py-2 font-bold">Views</span>
 	{#each Object.entries(data) as [item, count]}
-		<span class="py-1">{item}</span>
+		{#if type === 'paths'}
+			<a href="https://{domain}{item}" target="_blank" rel="noopener noreferrer" class="py-1"
+				>{item}</a
+			>
+		{:else}
+			<span class="py-1">{item}</span>
+		{/if}
 		<span class="py-1">{count}</span>
 	{/each}
 </div>
