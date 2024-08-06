@@ -31,6 +31,7 @@
 {#if domain}
 	<h1 class="text-2xl font-bold">{domain}</h1>
 
+	<h2 class="mt-2 text-xl font-bold">Unique Views</h2>
 	<div class="grid grid-cols-2 gap-2">
 		<Counter {domain} start={todayMidnight} compare={yesterdayMidnight} text="Today" />
 		<Counter {domain} start={thisWeek} compare={lastWeek} text="This Week" />
