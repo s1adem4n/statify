@@ -22,7 +22,7 @@
 </script>
 
 <div
-	class="flex w-full flex-col gap-1 rounded-xl border border-gray-100 px-4 py-2 shadow-sm sm:px-8 sm:py-4"
+	class="flex w-full flex-col gap-2 rounded-xl border border-gray-100 px-4 py-2 shadow-sm sm:px-8 sm:py-4"
 >
 	<span class="text-xl font-bold">{text}</span>
 	<div class="flex gap-2">
