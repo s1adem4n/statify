@@ -106,6 +106,10 @@ func main() {
 		})
 
 		router.GET("/tracker.js", func(c echo.Context) error {
+			if c.QueryParam("hash") != scripts.TrackerHash {
+				return c.Redirect(302, "/tracker.js?hash="+scripts.TrackerHash)
+			}
+
 			script := scripts.RenderTracker(serverAddress)
 			return c.Blob(200, "application/javascript", []byte(script))
 		})
