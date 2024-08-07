@@ -70,4 +70,7 @@
 		{/if}
 		<span class="py-1">{count}</span>
 	{/each}
+	{#if Object.keys(data).length === 0}
+		<span class="py-1">No data for this timespan</span>
+	{/if}
 </div>
