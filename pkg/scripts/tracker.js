@@ -22,7 +22,10 @@ const isMobileDevice = () => {
     );
   const isMobiUserAgent = /mobi/i.test(userAgent.toLowerCase());
 
-  const isTouchScreen = "ontouchstart" in window || navigator.msMaxTouchPoints;
+  const isTouchScreen =
+    "ontouchstart" in window ||
+    navigator.msMaxTouchPoints ||
+    navigator.maxTouchPoints > 0;
 
   return (isMobileUserAgent || isMobiUserAgent) && isTouchScreen;
 };
