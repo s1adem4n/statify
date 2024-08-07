@@ -14,13 +14,12 @@
 	const diff = $derived(currentCount - previousCount);
 
 	onMount(async () => {
-		currentCount = await client.views.count({ domain, start, dedupe: true });
+		currentCount = await client.views.count({ domain, start });
 		if (compare) {
 			previousCount = await client.views.count({
 				domain,
 				start: compare,
-				end: start,
-				dedupe: true
+				end: start
 			});
 		}
 	});

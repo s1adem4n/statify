@@ -48,7 +48,7 @@ func GetAnalyzeViews(dao *daos.Dao, c echo.Context) ([]analyze.View, error) {
 	}
 	dedupe := c.QueryParam("dedupe") == "true"
 
-	records, err := dao.FindRecordsByFilter("views", "domain = {:domain} && created >= {:start} && created <= {:end}", "", 0, 0, dbx.Params{
+	records, err := dao.FindRecordsByFilter("views", "domain = {:domain} && created >= {:start} && created <= {:end}", "created", 0, 0, dbx.Params{
 		"domain": domain,
 		"start":  start,
 		"end":    end,
@@ -112,7 +112,7 @@ func main() {
 
 		router.GET("/stats/views/count", func(c echo.Context) error {
 			views, err := GetAnalyzeViews(dao, c)
-			if err != nil || views == nil {
+			if err != nil {
 				return err
 			}
 

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import client from '$lib/api';
 	import Counter from './counter.svelte';
 	import TopTable from './top-table.svelte';
 
@@ -12,7 +11,10 @@
 
 	// gets the currents week monday
 	const thisWeek = new Date();
-	thisWeek.setDate(thisWeek.getDate() - thisWeek.getDay() + 1);
+	const day = thisWeek.getDay();
+	const diff = thisWeek.getDate() - day + (day === 0 ? -6 : 1); // adjust when day is sunday
+	thisWeek.setDate(diff);
+	thisWeek.setHours(0, 0, 0, 0);
 	thisWeek.setHours(0, 0, 0, 0);
 	const lastWeek = new Date(thisWeek);
 	lastWeek.setDate(lastWeek.getDate() - 7);
@@ -31,7 +33,7 @@
 {#if domain}
 	<h1 class="text-2xl font-bold">{domain}</h1>
 
-	<h2 class="mt-2 text-xl font-bold">Unique Views</h2>
+	<h2 class="mt-2 text-xl font-bold">Views</h2>
 	<div class="grid grid-cols-2 gap-2">
 		<Counter {domain} start={todayMidnight} compare={yesterdayMidnight} text="Today" />
 		<Counter {domain} start={thisWeek} compare={lastWeek} text="This Week" />
